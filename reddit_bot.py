@@ -7,12 +7,13 @@ from flask import Flask
 from threading import Thread
 
 # === Reddit Credentials ===
-reddit = praw.Reddit()
+reddit = praw.Reddit(
     client_id=os.getenv('CLIENT_ID'),
     client_secret=os.getenv('CLIENT_SECRET'),
     username=os.getenv('USERNAME'),
     password=os.getenv('PASSWORD'),
-    user_agent='ScavengersWeeklyBot by u/joinscvgers'
+    user_agent='AutoRecruit Bot by u/yourusername'
+)
 
 # === Settings ===
 SUBREDDIT_NAME = 'ClashOfClansRecruit'
