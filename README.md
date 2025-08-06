@@ -18,11 +18,10 @@ A Python Reddit bot that posts a weekly recruitment message to r/ClashOfClansRec
 
 ## 📝 Example Post
 
-**Title:**
-
-**Body:**
-
-> 🔥 **Join Scavengers – Competitive War & CWL Clan!** 🔥  
+**Title:[Recruiting] Scavengers | #2RUPQUQCJ | TH11+ | Lvl 10 | Social/War/Clan Games/Clan Capital | Independent**
+>
+**Body:🔥 **Join Scavengers – Competitive War & CWL Clan!** 🔥**
+>   
 > We’re a serious, active war clan running back-to-back wars and pushing to improve our attacks. If you’re active, skilled, and want to grow, join us!  
 >
 > ✅ 30v30 CWL & back-to-back wars  
