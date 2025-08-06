@@ -2,13 +2,115 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoRecruit Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #f5f5f5;
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 60px auto;
+            background: rgba(34, 40, 49, 0.98);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 36px 32px 28px 32px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            color: #00e676;
+        }
+
+        .status {
+            margin: 18px 0 28px 0;
+            font-size: 1.1rem;
+            background: #222831;
+            border-radius: 8px;
+            padding: 12px;
+            color: #b2ff59;
+            display: inline-block;
+        }
+
+        .info {
+            text-align: left;
+            margin: 0 auto 18px auto;
+            background: #393e46;
+            border-radius: 8px;
+            padding: 16px 18px;
+            color: #f5f5f5;
+            font-size: 1rem;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #bdbdbd;
+            font-size: 0.95rem;
+        }
+
+        .logo {
+            width: 64px;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 8px #00e67688);
+        }
+
+        a {
+            color: #00e676;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 18px 6vw;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <h1>AutoRecruit Dashboard</h1>
-    <p>The bot is running!</p>
+    <div class="container">
+        <img class="logo" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png"
+            alt="Bot Logo">
+        <h1>AutoRecruit Dashboard</h1>
+        <div class="status">
+            <strong>Status:</strong> Bot is <span style="color:#00e676;">Running</span>
+        </div>
+        <div class="info">
+            <strong>Next Scheduled Post:</strong> Every Monday, 13:00 UTC<br>
+            <strong>Subreddit:</strong> <a href="https://reddit.com/r/ClashOfClansRecruit"
+                target="_blank">r/ClashOfClansRecruit</a><br>
+            <strong>Clan:</strong> Scavengers | #2RUPQUQCJ
+        </div>
+        <div class="info">
+            <strong>Features:</strong>
+            <ul style="margin: 8px 0 0 18px; color:#b2ff59;">
+                <li>Automated weekly Reddit posts</li>
+                <li>Tracks last post to avoid duplicates</li>
+                <li>Flask dashboard for status</li>
+                <li>Secure credentials via <code>.env</code></li>
+            </ul>
+        </div>
+        <div class="footer">
+            🤖 AutoRecruit &mdash; <a href="https://github.com/" target="_blank">View on GitHub</a>
+        </div>
+    </div>
 </body>
 
 </html>
