@@ -92,6 +92,10 @@
         <div class="status">
             <strong>Status:</strong> Bot is <span style="color:#00e676;">Running</span>
         </div>
+        <div class="status">
+            <strong>Next Post In:</strong>
+            <span id="countdown">Calculating...</span>
+        </div>
         <div class="info">
             <strong>Next Scheduled Post:</strong> Every Monday, 13:00 UTC<br>
             <strong>Subreddit:</strong> <a href="https://reddit.com/r/ClashOfClansRecruit"
@@ -107,10 +111,47 @@
                 <li>Secure credentials via <code>.env</code></li>
             </ul>
         </div>
+        <div class="info">
+            <strong>Current Reddit Ad:</strong>
+            <div style="margin:12px 0 0 0; padding:12px; background:#232526; border-radius:8px;">
+                <div style="font-weight:bold; color:#00e676; margin-bottom:6px;">{{ title }}</div>
+                <div style="white-space:pre-line;">{{ body }}</div>
+            </div>
+        </div>
         <div class="footer">
-            🤖 AutoRecruit &mdash; <a href="https://github.com/leonpettitt0/AutoRecruit" target="_blank">View on GitHub</a>
+            🤖 AutoRecruit &mdash; <a href="https://github.com/leonpettitt0/AutoRecruit" target="_blank">View on
+                GitHub</a>
         </div>
     </div>
+    <script>
+        const nextPostTime = "{{ next_post_time }}";
+        function updateCountdown() {
+            if (!nextPostTime) return;
+            let dateString = nextPostTime;
+            // Only append 'Z' if there is no timezone info present
+            if (dateString && !dateString.match(/(Z|[+-]\d{2}:?\d{2})$/)) {
+                dateString += "Z";
+            }
+            const countDownDate = new Date(dateString).getTime();
+            const now = new Date().getTime();
+            let distance = countDownDate - now;
+            if (distance < 0) {
+                document.getElementById("countdown").innerText = "Posting soon!";
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown").innerText =
+                (days > 0 ? days + "d " : "") +
+                (hours > 0 ? hours + "h " : "") +
+                (minutes > 0 ? minutes + "m " : "") +
+                seconds + "s";
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
 
 </html>

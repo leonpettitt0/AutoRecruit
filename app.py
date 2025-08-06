@@ -27,26 +27,20 @@ def start_bot():
         logger.info("Bot thread started")
 
 @app.route('/')
-def index():
-    """Main dashboard page"""
-    try:
-        status = bot.get_status()
-        last_post = bot.get_last_post_info()
-        next_post = bot.get_next_post_time()
-        
-        return render_template('index.html', 
-                             status=status, 
-                             last_post=last_post,
-                             next_post=next_post,
-                             config=Config)
-    except Exception as e:
-        logger.error(f"Error loading dashboard: {e}")
-        flash(f"Error loading dashboard: {str(e)}", "error")
-        return render_template('index.html', 
-                             status={'running': False, 'error': str(e)},
-                             last_post=None,
-                             next_post=None,
-                             config=Config)
+def dashboard():
+    next_post_time = bot.get_next_post_time()  # Should return a datetime object
+    if isinstance(next_post_time, datetime):
+        next_post_time_str = next_post_time.isoformat()
+    else:
+        next_post_time_str = None
+        if next_post_time is not None:
+            logger.warning(f"Expected datetime, got {type(next_post_time)}: {next_post_time}")
+    return render_template(
+        "index.html",
+        title=Config.TITLE,
+        body=Config.BODY,
+        next_post_time=next_post_time_str
+    )
 
 @app.route('/manual_post', methods=['POST'])
 def manual_post():

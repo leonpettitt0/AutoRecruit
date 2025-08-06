@@ -198,25 +198,13 @@ class RedditBot:
         """Calculate next scheduled post time"""
         now = datetime.utcnow()
         
-        # Find next Monday at POST_HOUR_UTC
-        days_until_monday = (7 - now.weekday()) % 7
-        if days_until_monday == 0:  # Today is Monday
-            if now.hour < Config.POST_HOUR_UTC:
-                # Post later today
-                next_post = now.replace(hour=Config.POST_HOUR_UTC, minute=0, second=0, microsecond=0)
-            else:
-                # Post next Monday
-                next_post = now + timedelta(days=7)
-                next_post = next_post.replace(hour=Config.POST_HOUR_UTC, minute=0, second=0, microsecond=0)
-        else:
-            # Post next Monday
-            next_post = now + timedelta(days=days_until_monday)
-            next_post = next_post.replace(hour=Config.POST_HOUR_UTC, minute=0, second=0, microsecond=0)
-        
-        return {
-            'datetime': next_post.strftime('%Y-%m-%d %H:%M UTC'),
-            'hours_until': int((next_post - now).total_seconds() / 3600)
-        }
+        # Calculate next scheduled post day/hour (Config.POST_DAY_UTC uses Python's weekday: Monday=0, Sunday=6)
+        days_ahead = (Config.POST_DAY_UTC - now.weekday()) % 7
+        next_post = now + timedelta(days=days_ahead)
+        next_post = next_post.replace(hour=Config.POST_HOUR_UTC, minute=0, second=0, microsecond=0)
+        if next_post <= now:
+            next_post += timedelta(days=7)
+        return next_post
     
     def get_recent_logs(self):
         """Get recent log entries"""
