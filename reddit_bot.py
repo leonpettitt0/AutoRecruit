@@ -8,12 +8,11 @@ from threading import Thread
 
 # === Reddit Credentials ===
 reddit = praw.Reddit(
-    client_id='YOUR_CLIENT_ID',
-    client_secret='YOUR_CLIENT_SECRET',
-    username='joinscvgers',
-    password='YOUR_PASSWORD',
+    client_id=os.getenv('CLIENT_ID'),
+    client_secret=os.getenv('CLIENT_SECRET'),
+    username=os.getenv('USERNAME'),
+    password=os.getenv('PASSWORD'),
     user_agent='ScavengersWeeklyBot by u/joinscvgers'
-)
 
 # === Settings ===
 SUBREDDIT_NAME = 'ClashOfClansRecruit'
