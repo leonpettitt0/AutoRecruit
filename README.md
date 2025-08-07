@@ -1,26 +1,29 @@
-# 🤖 AutoRecruit - Weekly Reddit Bot
+# 🤖 AutoRecruit – Weekly Reddit Recruitment Bot
 
-A Python Reddit bot that posts a weekly recruitment message to r/ClashOfClansRecruit every Monday at 13:00 UTC.
+AutoRecruit is a Python bot that automatically posts a recruitment message to [r/ClashOfClansRecruit](https://www.reddit.com/r/ClashOfClansRecruit) every Monday at **13:00 UTC**.
 
-> 🔁 Built for `Scavengers | #2RUPQUQCJ` to maintain consistent and automated recruiting on Reddit.
+> 🔁 Originally built for `Scavengers | #2RUPQUQCJ` to maintain consistent, automated Reddit recruiting.
 
 ---
 
 ## 📌 Features
 
-- 🕒 Automatically posts once per week at **13:00 UTC on Mondays**
-- 💾 Tracks last post date to prevent duplicates
-- 🌐 Includes a lightweight Flask server to stay alive on platforms like Replit or Render
-- 🔐 Uses environment variables for Reddit credentials
-- 🔄 Runs continuously with hourly checks
+- 🗓️ Posts automatically every **Monday at 13:00 UTC**
+- 🔄 Continuously runs and **counts down until the next scheduled post**
+- 💬 **Displays the upcoming post content and title** in advance
+- 🧠 Prevents duplicate posts by logging the last post time
+- 🌐 Includes a lightweight Flask server for cloud hosting (Replit/Render)
+- 🔐 Uses environment variables for secure credential management
 
 ---
 
 ## 📝 Example Post
 
-**Title:[Recruiting] Scavengers | #2RUPQUQCJ | TH11+ | Lvl 10 | Social/War/Clan Games/Clan Capital | Independent**
->
-**Body:🔥 **Join Scavengers – Competitive War & CWL Clan!** 🔥**
+**Title:**  
+`[Recruiting] Scavengers | #2RUPQUQCJ | TH11+ | Lvl 10 | Social/War/Clan Games/Clan Capital | Independent`
+
+**Body:**
+`Join Scavengers – Competitive War & CWL Clan!** 🔥`
 >   
 > We’re a serious, active war clan running back-to-back wars and pushing to improve our attacks. If you’re active, skilled, and want to grow, join us!  
 >
@@ -34,46 +37,46 @@ A Python Reddit bot that posts a weekly recruitment message to r/ClashOfClansRec
 
 ---
 
-## 🚀 Deployment Options
+## 🚀 Deployment (Render)
 
-### 🌐 Render
-
-1. Fork this repo and push to your GitHub
-2. Create a **new Web Service** on [Render](https://render.com/)
-3. Select your repository and branch (e.g., `main`)
-4. Set build and start commands:
-5. Add environment variables:
-- `CLIENT_ID`
-- `CLIENT_SECRET`
-- `USERNAME`
-- `PASSWORD`
-
----
-
-## 🛠️ Configuration
-
-| Setting        | Description                                   |
-|----------------|-----------------------------------------------|
-| `POST_HOUR_UTC`| Hour of day to post (UTC) — `13` = 1:00 PM    |
-| `POST_DAY_UTC` | Day of week to post — `0` = Monday            |
-| `LOG_FILE`     | File to track last post date                  |
+1. Fork this repository to your GitHub
+2. Create a **Web Service** on [Render](https://render.com/)
+3. Connect your GitHub repo and select the branch (e.g. `main`)
+4. Set the following:
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `python main.py`
+5. Add the following **Environment Variables**:
+   - `CLIENT_ID`
+   - `CLIENT_SECRET`
+   - `USERNAME`
+   - `PASSWORD`
 
 ---
 
-## 📂 Files
+## ⚙️ Configuration
 
-- `main.py` — Main bot script  
-- `last_post.json` — Log of last post date  
-- `requirements.txt` — Python dependencies  
-- `.env` — Add your Reddit credentials here (if running locally)  
+| Variable         | Description                                 |
+|------------------|---------------------------------------------|
+| `POST_HOUR_UTC`  | Hour to post (UTC) — e.g., `13` = 1:00 PM   |
+| `POST_DAY_UTC`   | Day to post — `0` = Monday, `6` = Sunday    |
+| `LOG_FILE`       | File to store the last post date            |
+
+---
+
+## 📁 Project Structure
+
+- `main.py` – Core bot logic  
+- `last_post.json` – Log of last post timestamp  
+- `requirements.txt` – Python dependencies  
+- `.env` – Local credentials file (optional for local dev)
 
 ---
 
 ## ✅ Requirements
 
 - Python 3.7+
-- Reddit account with script app access
-- Subreddit permissions to post
+- Reddit script app credentials ([Create here](https://www.reddit.com/prefs/apps))
+- Subreddit permission to post
 
 Install dependencies:
 ```bash
