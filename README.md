@@ -1,8 +1,8 @@
-# 🤖 AutoRecruit – Weekly Reddit Recruitment Bot
+# 🤖 AutoRecruit – Weekly COC Reddit Recruitment Bot
 
 AutoRecruit is a Python bot that automatically posts a recruitment message to [r/ClashOfClansRecruit](https://www.reddit.com/r/ClashOfClansRecruit) every Monday at **13:00 UTC**.
 
-> 🔁 Originally built for `Scavengers | #2RUPQUQCJ` to maintain consistent, automated Reddit recruiting.
+> 🔁 Originally built for the `Scavengers | #2RUPQUQCJ` clan in the Clash of Clans mobile game to maintain consistent, automated Reddit recruiting.
 
 ---
 
